@@ -1,7 +1,7 @@
 <%= form_with model: article do |form| %>
   <div>
-    <p><%= form.label :title %></p>
-    <p><%= form.text_field :title %></p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
       <div>
         <%= message %>
@@ -10,13 +10,19 @@
   </div>
 
   <div>
-    <p><%= form.label :body %></p>
-    <p><%= form.textarea :body %></p>
+    <%= form.label :body %><br>
+    <%= form.textarea :body %>
     <% @article.errors.full_messages_for(:body).each do |message| %>
       <div>
         <%= message %>
       </div>
     <% end %>
+  </div>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select :status,
+                Visible::VALID_STATUSES,
+                selected: article.status || "public" %>
   </div>
 
   <div>
