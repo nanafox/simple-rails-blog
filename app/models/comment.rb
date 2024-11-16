@@ -4,6 +4,8 @@
 # Each article can have multiple comments but a comment belongs to a single
 # article at a time.
 class Comment < ApplicationRecord
+  include Visible
+
   belongs_to :article
 
   validates :body, :commenter, presence: true
