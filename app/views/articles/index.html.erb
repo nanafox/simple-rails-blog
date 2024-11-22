@@ -2,8 +2,8 @@
 
 <p>
   Our blog has
-  <%= Article.public_count %>
-  articles and counting
+  <%= pluralize(Article.public_count, "article") %>
+  and counting
 </p>
 
 <p><%= link_to "New Article", new_article_path %></p>

@@ -10,6 +10,7 @@
 <% if Comment.public_count == 0 %>
   <%= "No comments" %>
 <% else %>
+  <h4><%= pluralize(@article.comments.count, "comment") %></h4>
   <%= render @article.comments %>
 <% end %>
 
