@@ -7,8 +7,8 @@
 <p><%= @article.body %></p>
 
 <h2>Comments</h2>
-<% if Comment.public_count == 0 %>
-  <%= "No comments" %>
+<% if @article.comments.empty? %>
+  <h4><%= "No comments" %></h4>
 <% else %>
   <h4><%= pluralize(@article.comments.count, "comment") %></h4>
   <%= render @article.comments %>
