@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.where(deleted: false)
   end
 
   def show
@@ -35,7 +35,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
+    @article.update(deleted: true)
+    PostDeletionJob.perform_later(@article.id)
 
     redirect_to root_path, status: :see_other
   end
