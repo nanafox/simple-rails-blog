@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+post = Article.create(
+  title: "A new blog post", body: "A new blog post content", status: "public",
+)
+
+1000.times do |x|
+  post.comments.create(
+    commenter: "Commenter #{x + 1}", body: "This is comment #{x + 1}",
+    status: "public",
+  )
+end
