@@ -17,6 +17,8 @@
           <h3><%= article.title %></h3>
           <p><%= article.body.truncate(200) %></p>
 
+          <p style="font-size: small"><%= pluralize(article.comments.count, "comment") %></p>
+
           <p><%= button_to "Read more", article, method: :get %></p>
         </article>
       <% end %>
