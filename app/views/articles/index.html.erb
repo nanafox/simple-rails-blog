@@ -21,7 +21,6 @@
     <% if @articles.count.zero? %>
       <div style="text-align: center;">
         <h4>No Articles found</h4>
-        <%= button_to "All Articles", root_path, method: :get %>
       </div>
     <% else %>
       <% @articles.each do |article| %>
@@ -36,6 +35,12 @@
           </article>
         <% end %>
       <% end %>
+
     <% end %>
   </div>
+  <% if @articles.count != Article.public_count %>
+    <div style="text-align: center;">
+      <%= button_to "All Articles", root_path, method: :get %>
+    </div>
+  <% end %>
 </div>
