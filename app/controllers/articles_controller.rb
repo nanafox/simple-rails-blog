@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.where(deleted: false)
+    @articles = Article.where(deleted: false).by_query(params[:query])
   end
 
   def show
